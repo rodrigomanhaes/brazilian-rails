@@ -27,12 +27,13 @@ class Time
     self.strftime("%d/%m/%Y %H:%M")
   end
 
-  # Formata a hora usando nomes de dias e meses em Portugues
+  # Formata a hora usando nomes de dias e meses em Portugues, apenas quando
+  # solicitado.
   # Exemplo:
   # hora = Time.new
   # hora.strftime("%B") ==> "Janeiro"
   # http://forum.rubyonbr.org/forums/1/topics/261
-  def strftime(format)
+  def strftime_br(format)
     format = format.dup
     format.gsub!(/%a/, Date::ABBR_DAYNAMES[self.wday])
     format.gsub!(/%A/, Date::DAYNAMES[self.wday])
@@ -41,4 +42,3 @@ class Time
     self.strftime_nolocale(format)
   end
 end
-
